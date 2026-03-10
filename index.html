@@ -1,37 +1,126 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Page</title>
+<title>Shopping Cart</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: linear-gradient(135deg,#6a11cb,#2575fc);
+    margin:0;
+    padding:0;
+    color:#333;
+}
+
+h1{
+    text-align:center;
+    color:white;
+    padding:20px;
+}
+
+.container{
+    display:flex;
+    justify-content:space-around;
+    padding:30px;
+}
+
+.items{
+    display:flex;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:150px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:scale(1.05);
+}
+
+.price{
+    font-weight:bold;
+    margin:10px 0;
+}
+
+button{
+    background:#2575fc;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1b5fd3;
+}
+
+.cart{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    width:250px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.cart h2{
+    margin-top:0;
+}
+
+ul{
+    padding-left:20px;
+}
+
+.total{
+    margin-top:10px;
+    font-weight:bold;
+}
+</style>
+
 </head>
+
 <body>
-    
-<div>Welcome</div>
 
-<div>
-    <div>
-        <div>Item 1</div>
-        <div>500</div>
-        <button onclick="a('a',500)">Click</button>
-    </div>
+<h1>Welcome to Mini Shop 🛍️</h1>
 
-    <div>
-        <div>Item 2</div>
-        <div>800</div>
-        <button onclick="a('b',800)">Click</button>
-    </div>
+<div class="container">
 
-    <div>
-        <div>Item 3</div>
-        <div>400</div>
-        <button onclick="a('c',400)">Click</button>
-    </div>
+<div class="items">
+
+<div class="card">
+<div>Item 1</div>
+<div class="price">₹500</div>
+<button onclick="a('Item 1',500)">Add</button>
 </div>
 
-<div>
-    <div>Cart</div>
-    <ul id="x"></ul>
-    <div>Total <span id="t">0</span></div>
-    <button onclick="p()">Pay</button>
+<div class="card">
+<div>Item 2</div>
+<div class="price">₹800</div>
+<button onclick="a('Item 2',800)">Add</button>
+</div>
+
+<div class="card">
+<div>Item 3</div>
+<div class="price">₹400</div>
+<button onclick="a('Item 3',400)">Add</button>
+</div>
+
+</div>
+
+<div class="cart">
+<h2>Cart 🛒</h2>
+<ul id="x"></ul>
+<div class="total">Total ₹ <span id="t">0</span></div>
+<br>
+<button onclick="p()">Pay</button>
+</div>
+
 </div>
 
 <script>
@@ -39,14 +128,14 @@ var z = 0;
 
 function a(n,p){
     var li = document.createElement("li");
-    li.innerHTML = n + " " + p;
+    li.innerHTML = n + " ₹" + p;
     document.getElementById("x").appendChild(li);
     z = z + p;
     document.getElementById("t").innerHTML = z;
 }
 
 function p(){
-    alert("Done");
+    alert("Payment Successful ✅");
     document.getElementById("x").innerHTML="";
     z = 0;
     document.getElementById("t").innerHTML = 0;
